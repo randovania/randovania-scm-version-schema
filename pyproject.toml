@@ -37,8 +37,24 @@ content-type = "text/markdown"
 [project.urls]
 Homepage = "https://github.com/randovania/randovania-scm-version-schema"
 
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+]
+
 [tool.setuptools_scm]
 local_scheme = "no-local-version"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+asyncio_mode = "auto"
+xfail_strict = true
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]
 
 [tool.ruff]
 line-length = 120
