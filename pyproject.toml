@@ -8,7 +8,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "randovania-scm-version-schema"
 authors = [{name = "Henrique Gemignani Passos Lima"}]
-description = "library for sending executables to Wii's Homebrew Channel"
+description = "setuptools-scm version_schema hook for randovania"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
