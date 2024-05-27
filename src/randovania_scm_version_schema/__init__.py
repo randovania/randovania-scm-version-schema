@@ -12,7 +12,7 @@ def version_scheme(version: setuptools_scm.ScmVersion) -> str:
 
     git_repo = Repo(version.config.absolute_root)
     version_file = Path(version.config.absolute_root).joinpath(version.config.version_file)
-    
+
     full_git_hash = repr(git_repo.head().decode("ascii"))
     try:
         git_hash = repr(bytes.fromhex(version.node[1:9]))
