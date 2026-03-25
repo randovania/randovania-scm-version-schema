@@ -5,6 +5,12 @@ from pathlib import Path
 
 import setuptools_scm
 from dulwich.repo import Repo
+from setuptools_scm.version import (
+    SEMVER_LEN,
+    SEMVER_MINOR,
+    SEMVER_PATCH,
+    guess_next_simple_semver,
+)
 
 
 def version_scheme(version: setuptools_scm.ScmVersion) -> str:
@@ -34,13 +40,13 @@ dirty = {version.dirty}
     )
 
     if version.exact:
-        result = setuptools_scm.version.guess_next_simple_semver(
-            version, retain=setuptools_scm.version.SEMVER_LEN, increment=False
+        result = guess_next_simple_semver(
+            version, retain=SEMVER_LEN, increment=False
         )
     else:
         if version.branch != "stable":
-            retain = setuptools_scm.version.SEMVER_MINOR
+            retain = SEMVER_MINOR
         else:
-            retain = setuptools_scm.version.SEMVER_PATCH
-        result = version.format_next_version(setuptools_scm.version.guess_next_simple_semver, retain=retain)
+            retain =SEMVER_PATCH
+        result = version.format_next_version(guess_next_simple_semver, retain=retain)
     return result
