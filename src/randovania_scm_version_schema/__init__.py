@@ -40,7 +40,9 @@ dirty = {version.dirty}
     else:
         if version.branch != "stable":
             retain = setuptools_scm.version.SEMVER_MINOR
+            fmt: str = "{guessed}.dev{distance}"
         else:
             retain = setuptools_scm.version.SEMVER_PATCH
-        result = version.format_next_version(setuptools_scm.version.guess_next_simple_semver, retain=retain)
+            fmt: str = "{guessed}.rc{distance}"
+        result = version.format_next_version(setuptools_scm.version.guess_next_simple_semver, retain=retain, fmt=fmt)
     return result
