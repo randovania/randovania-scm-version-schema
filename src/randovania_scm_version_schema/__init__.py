@@ -40,13 +40,11 @@ dirty = {version.dirty}
     )
 
     if version.exact:
-        result = guess_next_simple_semver(
-            version, retain=SEMVER_LEN, increment=False
-        )
+        result = guess_next_simple_semver(version, retain=SEMVER_LEN, increment=False)
     else:
         if version.branch != "stable":
             retain = SEMVER_MINOR
         else:
-            retain =SEMVER_PATCH
+            retain = SEMVER_PATCH
         result = version.format_next_version(guess_next_simple_semver, retain=retain)
     return result
