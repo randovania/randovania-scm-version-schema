@@ -44,7 +44,9 @@ dirty = {version.dirty}
     else:
         if version.branch != "stable":
             retain = SEMVER_MINOR
+            fmt: str = "{guessed}.dev{distance}"
         else:
             retain = SEMVER_PATCH
-        result = version.format_next_version(guess_next_simple_semver, retain=retain)
+            fmt: str = "{guessed}.rc{distance}"
+        result = version.format_next_version(guess_next_simple_semver, retain=retain, fmt=fmt)
     return result
